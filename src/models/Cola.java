@@ -7,6 +7,7 @@ public class Cola<T> {
 	private T[] cola;
 
 	/* Constructor */
+	@SuppressWarnings("unchecked")
 	public Cola() {
 
 		this.cola = (T[]) new Object[0];
@@ -15,6 +16,10 @@ public class Cola<T> {
 
 	/* Metodos */
 
+	/**
+	 * para imprimir la cola
+	 * 
+	 */
 	@Override
 	public String toString() {
 		return "Cola =" + Arrays.toString(cola) + "\n";
@@ -58,20 +63,28 @@ public class Cola<T> {
 	 * Elimina todos los elementos y deja el array en 0
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	public void clear() {
 		this.cola = (T[]) new Object[0];
 	}
 
-	/***
-	 * Elimina primer elemento cola
+	/**
+	 * Elimina ultimo elemento cola(lifo)
 	 * 
-	 * @return
 	 */
-	public T pop() {
+	public void poplifo() {
+		T elemento = this.cola[this.cola.length - 1];
+		remove(elemento);
+	}
+
+	/***
+	 * Elimina primer elemento cola (fifo)
+	 */
+	public void pop() {
 
 		T elemento = this.cola[0];
+
 		remove(elemento);
-		return elemento;
 
 	}
 
@@ -80,22 +93,19 @@ public class Cola<T> {
 	 * 
 	 * @param element
 	 */
+	@SuppressWarnings("unchecked")
 	public void remove(T element) {
-
 		T[] aux = (T[]) new Object[this.cola.length - 1];
 
+		int j = 0;
 		for (int i = 0; i < this.cola.length; i++) {
-			if (this.cola[i]==element) {
-				this.cola[i] = null;
+			if (this.cola[i] != element) {
+				aux[j] = this.cola[i];
+				j++;
 			}
-			for (int x = 0; x < this.cola.length; x++) {
-				if (this.cola[i] != null) {
-					aux[i] = this.cola[i];
-				}
 
-				this.cola = aux;
-			}
 		}
+		this.cola = aux;
 	}
 
 	/***
