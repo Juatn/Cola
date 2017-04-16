@@ -53,8 +53,11 @@ public class Cola<T> {
 	 **/
 	public boolean contains(T element) {
 		for (int i = 0; i < this.cola.length; i++) {
-			if (this.cola[i].equals(element))
+			if (this.cola[i].equals(element)) {
 				return true;
+			} else {
+
+			}
 		}
 		return false;
 	}
