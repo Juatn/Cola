@@ -34,7 +34,7 @@ public class test {
 		
 		System.out.println(prueba.pop().toString()); //funciona
 		
-		System.out.println(prueba.isEmpty());  //funciona
+		System.out.println(prueba.isEmpty());  //funciona sfd
 		
 		
 
