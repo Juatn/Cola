@@ -17,7 +17,7 @@ public class Cola<T> {
 
 	@Override
 	public String toString() {
-		return "Cola [cola=" + Arrays.toString(cola) + "]";
+		return "Cola =" + Arrays.toString(cola) + "\n";
 	}
 
 	/**
@@ -82,9 +82,18 @@ public class Cola<T> {
 	 */
 	public void remove(T element) {
 
+		T[] aux = (T[]) new Object[this.cola.length - 1];
+
 		for (int i = 0; i < this.cola.length; i++) {
-			if (this.cola[i] == element) {
+			if (this.cola[i]==element) {
 				this.cola[i] = null;
+			}
+			for (int x = 0; x < this.cola.length; x++) {
+				if (this.cola[i] != null) {
+					aux[i] = this.cola[i];
+				}
+
+				this.cola = aux;
 			}
 		}
 	}
